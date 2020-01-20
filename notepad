@@ -1,0 +1,18 @@
+S3
+
+Buckets
+- buckets are owned by and trust the account (root) they are created in, no one else
+- Use IAM roles/policies to give bucket perms within same account
+- CAN'T be used to give bucket perms to entities outside the account that you don't owned
+- How then? Resource policy, or bucket policy
+    - Used to authorize access to buckets or objects inside a bucket
+    - Can apply to anonymous accesses (public)
+    - Final authorization is a combination of all applicable policies
+        - Priority order is 1. Explicit Deny, 2. Explicit Allow, 3. Implicit Deny
+    - ACLs for granular, object-level permissions; AWS discourages use now
+https://docs.aws.amazon.com/AmazonS3/latest/user-guide/block-public-access-bucket.html
+https://aws.amazon.com/blogs/security/iam-policies-and-bucket-policies-and-acls-oh-my-controlling-access-to-s3-resources/
+
+Uploads
+- Single PUT Upload vs Multipart Upload
+    - Single PUT: Limit of 5GB, can cause performance issues, if upload fails WHOLE UPLOAD fails
