@@ -1,0 +1,73 @@
+S3
+
+Buckets
+- buckets are owned by and trust the account (root) they are created in, no one else
+- Use IAM roles/policies to give bucket perms within same account
+- CAN'T be used to give bucket perms to entities outside the account that you don't owned
+- How then? Resource policy, or bucket policy
+    - Used to authorize access to buckets or objects inside a bucket
+    - Can apply to anonymous accesses (public)
+    - Final authorization is a combination of all applicable policies
+        - Priority order is 1. Explicit Deny, 2. Explicit Allow, 3. Implicit Deny
+    - ACLs for granular, object-level permissions; AWS discourages use now
+
+https://docs.aws.amazon.com/AmazonS3/latest/user-guide/block-public-access-bucket.html
+https://aws.amazon.com/blogs/security/iam-policies-and-bucket-policies-and-acls-oh-my-controlling-access-to-s3-resources/
+
+Uploads
+- Single PUT Upload vs Multipart Upload
+    - Single PUT: Limit of 5GB, can cause performance issues, if upload fails WHOLE UPLOAD fails
+    - Multipart: Object is broken up (up to 10k parts), each part 5MB to 5GB, last part can be less
+    - Multipart is faster (parallel), individual parts can fail and be retried, AWS recommends for
+      anything > 100 MB, required for > 5GB
+
+https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html
+https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html
+
+Encryption
+- Data between S3 is encrypted in transit; Encryption at rest can be configured on a per-object basis
+	- Client-side: when strict security compliance needed
+	- Server-Side Encryption with Customer-Managed Keys (SSE-C): S3 handles encrypt/decrypt, 	customer responsible for keys, must be supplied for PUT/GET
+	- Server-Side Encryption with S3-Managed Keys (SSE-S3): Objects encrypted using AES-256 by 		S3, S3 generates keys via KMS, keys stored with objects in encrypted form, if you have perms
+	you can decrypt and access
+	- Server-Side Encryption with AWS KMS-Managed Keys (SSE-KMS): Objects encrypted using 		individual keys KMS generates, encrypted keys stored w/ encrypted objects, decrypt needs S3 		and KMS key perms (role separation)
+- Bucket Default Encryption:
+	- Objects are encrypted in S3, not buckets.
+	- Each PUT operation must specify encryption or not
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
