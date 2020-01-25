@@ -1,0 +1,17 @@
+Access Management Basics
+Principal - A person or application that can make authenticated or anonymous request to perform an action on a system
+Authentication - The process of authenticating a principal against an identity. This could be via username and password or API keys
+Identity - Objects that require authentication and are authorized to access resources
+Authorization - The process of checking and allowing or denying access to a resource for an identity
+
+Shared Responsibility Model
+AWS is responsible for security OF the cloud: software, services, hardware, global infrastructure
+Customer is responsible for security IN the cloud: data, IAM configuration, OS/Network/Firewall config, encryption
+
+Cloud Service Models
+Service models define how a service or product is delivered, how you pay, and what you receive. They also define which part of the product you manage and accept risks for, as well as which part the vendor is responsible for.
+IaaS - Customer responsible for data, app, runtime, OS; AWS responsible for virtualization, host/servers, network/storage, data center
+PaaS - Customer responsible for data, app; AWS responsible for runtime, OS, virtualization, host/servers, network/storage, data center
+SaaS - Customer responsible for data; AWS responsible for app, runtime, OS, virtualization, host/servers, network/storage, data center
+
+https://interactive.linuxacademy.com/diagrams/AWSCSA.html

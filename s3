@@ -36,3 +36,37 @@ Encryption
 	- Each PUT operation must specify encryption or not
 
 
+S3 Encryption Options
+
+Client-Side Encryption:
+- Client responsible for...
+- Used when...
+
+Server-Side Encryption with Customer-Managed Keys (SSE-C)
+- __ handles encrypt/decrypt, customer responsible for....
+- Key must be supplied for...
+
+Server-Side Encryption with S3-Managed Keys (SSE-S3)
+- Objects encrypted by __ using ______, __ generates keys via ___
+- Encrypted keys stored..., decryption requires...
+
+Server-Side Encryption with AWS KMS-Managed Keys (SSE-KMS)
+- Objects encrypted using... 
+- Encrypted keys stored..., decryption requires...
+S3 Encryption Options
+
+Client-Side Encryption:
+- Client responsible for encryption/decryption, key management
+- Used when strict security compliance needed (admin + process overhead)
+
+Server-Side Encryption with Customer-Managed Keys (SSE-C)
+- S3 handles encrypt/decrypt, customer responsible for key management
+- Must be supplied for each PUT/GET
+
+Server-Side Encryption with S3-Managed Keys (SSE-S3)
+- Objects encrypted by S3 using AES-256, S3 generates keys via KMS
+- Encrypted keys stored with encrypted objects, decryption requires access perms
+
+Server-Side Encryption with AWS KMS-Managed Keys (SSE-KMS)
+- Objects encrypted using individual KMSgenerated keys, 
+- Encrypted keys stored with encrypted objects, decryption requires S3 and KMS key perms (provides role separation)
